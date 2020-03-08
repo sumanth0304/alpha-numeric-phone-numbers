@@ -22,6 +22,8 @@ git clone https://github.com/sumanth0304/alpha-numeric-phone-numbers.git
 
 ### Install dependencies
 
+- Install in both client and server root folder where package.json is located.
+
 ```sh
 npm install
 ```
