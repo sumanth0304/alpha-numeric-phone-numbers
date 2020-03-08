@@ -1,0 +1,26 @@
+{
+    "name": "web-app",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "jest"
+    },
+    "license": "MIT",
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ]
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "express": "^4.17.1",
+        "jw-paginate": "^1.0.4"
+    },
+    "devDependencies": {
+        "jest": "^25.1.0",
+        "nodemon": "^1.19.4",
+        "supertest": "^4.0.2"
+    }
+}

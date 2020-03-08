@@ -1,0 +1,61 @@
+<div class="card text-center border-info m-3">
+	<h3 class="card-header text-info">
+		Coding Assignment : All possible combinations of alpha-numeric phone numbers from the input
+		phone number
+	</h3>
+
+	<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" class="form-group form-class">
+		<h5 class="card-title text-info">Phone Number (format: xxx-xxx-xxxx):</h5>
+		<input
+			name="phoneNumber"
+			[ngModel]="user.phoneNumber"
+			pattern="^\d{3}-\d{3}-\d{4}$"
+			#phNumber="ngModel"
+		/>
+		<div *ngIf="phNumber.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+			<div *ngIf="phNumber.errors.pattern" class="error">
+				Phone number is not valid. Phone Number (eg: 219-435-1243)
+			</div>
+		</div>
+		<button>Submit</button>
+	</form>
+	<div class="container" *ngIf="isValidFormSubmitted">
+		<div class="card-body text-info">
+			<h5>Total Count: {{ pager.totalItems }}</h5>
+			<ul class="list-group list-group-flush" *ngFor="let item of pageOfItems">
+				<li class="list-group-item">{{ item.number }}</li>
+			</ul>
+		</div>
+		<div class="card-footer pb-0 pt-3">
+			<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+				<li [ngClass]="{ disabled: pager.currentPage === 1 }" class="page-item first-item">
+					<a routerLink [queryParams]="{ page: 1 }" class="page-link">First</a>
+				</li>
+				<li [ngClass]="{ disabled: pager.currentPage === 1 }" class="page-item previous-item">
+					<a routerLink [queryParams]="{ page: pager.currentPage - 1 }" class="page-link"
+						>Previous</a
+					>
+				</li>
+				<li
+					*ngFor="let page of pager.pages"
+					[ngClass]="{ active: pager.currentPage === page }"
+					class="page-item number-item"
+				>
+					<a routerLink [queryParams]="{ page: page }" class="page-link">{{ page }}</a>
+				</li>
+				<li
+					[ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+					class="page-item next-item"
+				>
+					<a routerLink [queryParams]="{ page: pager.currentPage + 1 }" class="page-link">Next</a>
+				</li>
+				<li
+					[ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+					class="page-item last-item"
+				>
+					<a routerLink [queryParams]="{ page: pager.totalPages }" class="page-link">Last</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
