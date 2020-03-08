@@ -11,6 +11,7 @@
 			[ngModel]="user.phoneNumber"
 			pattern="^\d{3}-\d{3}-\d{4}$"
 			#phNumber="ngModel"
+			(keyup)="onKey($event)"
 		/>
 		<div *ngIf="phNumber.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
 			<div *ngIf="phNumber.errors.pattern" class="error">

@@ -14,7 +14,14 @@ export class HomeComponent {
 
 	constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
-	private loadPage(page) {
+	onKey(event: any) {
+		if (event.target.value.length < 10) {
+			this.pageOfItems = [];
+			this.pager['totalItems'] = 0;
+		}
+	}
+
+	loadItems(page) {
 		// get page of items from api
 		const { phoneNumber } = this.user;
 		this.http
@@ -36,8 +43,7 @@ export class HomeComponent {
 
 	activeRouteSubscriptions() {
 		this.route.queryParams.subscribe(x => {
-			debugger;
-			this.loadPage(x.page || 1);
+			this.loadItems(x.page || 1);
 		});
 	}
 }
