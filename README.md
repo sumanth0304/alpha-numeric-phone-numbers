@@ -1,5 +1,41 @@
-# angular-8-node-server-side-pagination
+# alpha-numeric phone numbers
 
-Angular 8 + Node - Server Side Pagination Example
+> Assuming a standard alpha-numeric telephone keypad, App will generate a list of all possible combinations of alpha-numeric phone numbers from the input phone number.
 
-For a demo and further details see https://jasonwatmore.com/post/2019/06/28/angular-8-node-server-side-pagination-tutorial-example
+## Features
+
+- Responsive web design:
+
+  - Responsive for different viewports.
+
+- Support for legacy browsers:
+
+- Smooth page scroll to an anchor on the same page
+
+## Getting Started
+
+### Clone or download this repository
+
+```sh
+git clone https://github.com/sumanth0304/alpha-numeric-phone-numbers.git
+```
+
+### Install dependencies
+
+```sh
+npm install
+```
+
+or
+
+```sh
+yarn install
+```
+
+### Start the website
+
+```sh
+npm run start / npm start
+```
+
+It will open a new tab in your browser and run the website. Should it not open, visit [http://localhost:8080](http://localhost:3000)
