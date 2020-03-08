@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { User } from '../app.model';
+import { User, IPager } from '../app.model';
 
 @Component({ templateUrl: 'home.component.html', styleUrls: ['./home.component.css'] })
 export class HomeComponent {
-	pager = {};
+	pager = {} as IPager;
 	pageOfItems = [];
 	phoneNumberPattern = '^d{3}-d{3}-d{4}$';
 	isValidFormSubmitted = false;
@@ -17,7 +17,7 @@ export class HomeComponent {
 	onKey(event: any) {
 		if (event.target.value.length < 10) {
 			this.pageOfItems = [];
-			this.pager['totalItems'] = 0;
+			this.pager.totalItems = 0;
 		}
 	}
 
