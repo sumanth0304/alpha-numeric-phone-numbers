@@ -5,19 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { AppService } from './app.service';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule, 
-        ReactiveFormsModule,
-        HttpClientModule,
-        appRoutingModule
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent
-    ],
-    bootstrap: [AppComponent]
+	imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, appRoutingModule],
+	declarations: [AppComponent, HomeComponent],
+	providers: [AppService],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

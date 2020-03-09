@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { User, IPager } from '../app.model';
+import { AppService } from '../app.service';
 
 @Component({ templateUrl: 'home.component.html', styleUrls: ['./home.component.css'] })
 export class HomeComponent {
@@ -12,7 +12,7 @@ export class HomeComponent {
 	isValidFormSubmitted = false;
 	user = new User();
 
-	constructor(private http: HttpClient, private route: ActivatedRoute) {}
+	constructor(private route: ActivatedRoute, private appSvc: AppService) {}
 
 	onKey(event: any) {
 		if (event.target.value.length < 10) {
@@ -24,12 +24,10 @@ export class HomeComponent {
 	loadItems(page) {
 		// get page of items from api
 		const { phoneNumber } = this.user;
-		this.http
-			.get<any>(`/api/getalphaNnumericphoneNumbers?page=${page}&phoneNumber=${phoneNumber}`)
-			.subscribe(x => {
-				this.pager = x.pager;
-				this.pageOfItems = x.pageOfItems;
-			});
+		this.appSvc.getItems(page, phoneNumber).subscribe(x => {
+			this.pager = x.pager;
+			this.pageOfItems = x.pageOfItems;
+		});
 	}
 	onFormSubmit(form: NgForm) {
 		this.user.phoneNumber = form.value.phoneNumber;
